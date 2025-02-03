@@ -7,7 +7,7 @@ const array = input[1].split(' ').map(Number);
 let left = Math.max(...array);
 let right = array.reduce((acc, cur) => acc + cur);
 
-let answer = Number.MAX_SAFE_INTEGER;
+let answer = 0;
 while (left <= right) {
   let cnt = 1;
   let mid = Math.floor((left + right) / 2);
@@ -24,10 +24,8 @@ while (left <= right) {
 
   if (cnt > M) {
     left = mid + 1;
-  }
-
-  if (cnt <= M) {
-    if (answer >= mid) answer = mid;
+  } else {
+    answer = mid;
     right = mid - 1;
   }
 }
