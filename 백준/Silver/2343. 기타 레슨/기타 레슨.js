@@ -18,7 +18,6 @@ while (left <= right) {
     } else {
       tmp = 0 + array[i];
       cnt++;
-      if (cnt > M) break;
     }
   }
 
