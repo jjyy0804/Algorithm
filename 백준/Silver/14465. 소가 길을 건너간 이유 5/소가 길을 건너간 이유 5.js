@@ -3,7 +3,7 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 const [N, K, B] = input[0].split(" ").map(Number);
-const broken_traffic_lights = new Set(input.slice(1).map(Number));
+const broken_traffic_lights = input.slice(1).map(Number);
 
 const broken = Array(N + 1).fill(0);
 for (let light of broken_traffic_lights) {
