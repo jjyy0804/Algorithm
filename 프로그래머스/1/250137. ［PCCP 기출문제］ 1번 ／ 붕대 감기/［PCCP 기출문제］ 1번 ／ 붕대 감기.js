@@ -16,6 +16,6 @@ function solution(bandage, health, attacks) {
         
         if(currentHealth<=0) return -1;
     }
-    if(currentHealth<=0) return -1;
+    
     return currentHealth;
 }
