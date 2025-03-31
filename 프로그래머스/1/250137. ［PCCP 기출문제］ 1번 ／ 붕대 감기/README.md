@@ -1,6 +1,6 @@
 # [level 1] [PCCP 기출문제] 1번 / 붕대 감기 - 250137 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250137?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250137) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 03월 31일 21:43:39
+2025년 03월 31일 21:44:29
 
 ### 문제 설명
 
