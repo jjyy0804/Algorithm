@@ -1,23 +1,15 @@
-let fs = require('fs');
-let input =fs.readFileSync('/dev/stdin').toString().split('\n');
+const input = require("fs")
+  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "input.txt")
+  .toString()
+  .trim()
+  .split("\n");
 
-let arr=[]
-for(let value of input){
-  arr.push(value.trim().split(' ')) //공백 제거
-}
+input.shift(); // N 제거
 
-//[String, String]-->][Int, String] 배열로 변환
-let toIntArr = arr.map((value) => {
-  let firstValue = parseInt(value[0]);
-  return value[1] !== undefined ? [firstValue, value[1]] : null;
-}).filter(Boolean);
+const result = input
+  .map(line => line.split(" "))
+  .sort((a, b) => Number(a[0]) - Number(b[0]))
+  .map(member => member.join(" "))
+  .join("\n");
 
-
-function solution(testCase){
-  testCase.sort((a, b) => a[0] - b[0]);
-  let answer=testCase.join('\n').replaceAll(',', ' ');
-  console.log(answer)
-
-}
-
-solution(toIntArr)
+console.log(result);
