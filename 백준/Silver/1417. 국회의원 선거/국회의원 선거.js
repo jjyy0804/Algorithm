@@ -1,20 +1,26 @@
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-const input = require('fs').readFileSync(filePath).toString().trim().split('\n').map(Number);
-const N = input.shift();
-let myVotes = input.shift();
+const input = require("fs")
+  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "input.txt")
+  .toString()
+  .trim()
+  .split("\n");
 
-if (N === 1) {
-  console.log(0);
-  return
-};
-let max = Math.max(...input);
+const N = +input.shift();
+let dasom = +input.shift();
+let voteList = input.map(Number);
+
 let count = 0;
 
-while (myVotes <= max) {
-  input[input.indexOf(max)] -= 1;
-  myVotes += 1;
-  count += 1;
-  max = Math.max(...input);
-}
-console.log(count);
+while (true) {
 
+  // 최다 득표자 구하기 (다솜 제외)
+  let maxVote = Math.max(...voteList);
+
+  if (dasom > maxVote) break;
+
+  const idx = voteList.indexOf(maxVote); // 최다 득표자의 인덱스
+  voteList[idx]--;
+  dasom++;
+  count++;
+}
+
+console.log(count);
