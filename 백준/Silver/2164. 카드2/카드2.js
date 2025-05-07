@@ -1,60 +1,18 @@
-let fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-let input = fs.readFileSync(filePath).toString()
+const input = require("fs")
+  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "input.txt")
+  .toString()
+  .trim();
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-    this.prev = null;
-  }
-}
-class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-  enqueue(value) {
-    let newNode = new Node(value);
+const N = Number(input);
 
-    if (!this.head) {
-      this.head = newNode;
-    } else {
-      this.tail.next = newNode;
-      newNode.prev = this.tail;
-    }
-    this.tail = newNode;
-    this.length++;
-    return newNode;
-  }
-  dequeue() {
-    if (!this.head) return;
-    if (this.head === this.tail) {
-      this.head = null;
-      this.tail = null;
-    } else {
-      this.head = this.head.next;
-      this.head.prev = null;
-    }
-    this.length--;
-  }
-  getHead() {
-    return this.head.value;
-  }
-  getSize() {
-    return this.length;
-  }
+// 배열 대신 인덱스를 이용해 queue처럼 사용
+const queue = Array.from({ length: N }, (_, i) => i + 1);
+let head = 0;
+
+while (head < queue.length - 1) {
+  head++; // 맨 앞 버림
+  queue.push(queue[head]); // 그다음 카드 맨 뒤로
+  head++;
 }
 
-const list = new LinkedList();
-
-for (let i = 1; i <= Number(input); i++) list.enqueue(i);
-
-while (list.getSize() > 1) {
-  list.dequeue();
-  list.enqueue(list.getHead());
-  list.dequeue();
-}
-
-console.log(list.getHead());
+console.log(queue[queue.length - 1]);
