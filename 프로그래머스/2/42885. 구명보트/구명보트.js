@@ -1,16 +1,17 @@
 function solution(people, limit) {
-  let answer = 0;
-  let sortPeople = people.sort((a, b) => a - b);
-  let i = 0;
-  let j = sortPeople.length - 1;
-
-  while (i <= j) {
-    if (sortPeople[i] + sortPeople[j] <= limit) {
-      i++;
+    people.sort((a, b) => b - a);
+    let left = 0;
+    let right = people.length-1;
+    let count =0;
+    while(left<=right){
+        if((people[left]+people[right]) > limit){
+            left++;
+            count++;
+        }else{
+            left++;
+            right--
+            count++
+        }
     }
-    j--;
-    answer++;
-  }
-
-  return answer;
+    return count;
 }
