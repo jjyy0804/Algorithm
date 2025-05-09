@@ -1,17 +1,20 @@
 function solution(n, times) {
     let start=1;
-    let end=n*(Math.max(...times));
-    let answer=end;
+    let end = Math.max(...times)*n; // 가장 오래 걸리는 심사대에서 모두가 받는 경우
+    let answer;
     
     while(start<=end){
         let mid = Math.floor((start+end)/2);
-        const processed = times.reduce((acc, time) => acc + Math.floor(mid / time), 0);
+        let total=0;
+        times.forEach(time=>{
+           total+= Math.floor(mid/time);
+        })
         
-        if(processed>=n){
-            answer=mid;
+        if(total>=n){
             end=mid-1;
         }else{
-            start=mid+1
+            start=mid+1;
+            answer=start;
         }
     }
     return answer;
