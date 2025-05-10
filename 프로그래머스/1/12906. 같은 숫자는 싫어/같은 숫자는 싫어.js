@@ -1,11 +1,8 @@
 function solution(arr)
 {
- let answer=[]
- for(let i =0;i<arr.length;i++){
-     let lastValue=answer[answer.length-1];
-     if(lastValue!==arr[i]){
-         answer.push(arr[i]);
-     }
- }
-    return answer;
+    const stack=[];
+    arr.forEach(num=>{
+        if(stack[stack.length-1]!==num) stack.push(num);
+    })
+    return stack;
 }
