@@ -4,7 +4,7 @@ function solution(s){
         if (s[i] === '(') {
             stack.push('(');
         } else {
-            if (stack.length === 0) return false; // ❗닫는 괄호인데 열려있는 게 없음
+            if (stack.length === 0) return false; 
             stack.pop();
         }
     }
