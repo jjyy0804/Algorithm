@@ -1,10 +1,8 @@
 function solution(price, money, count) {
-    let answer = -1;
-    let total=0
+    const arr= Array.from({length:price},(_,i)=>i+1);
+    let sum =0;
     for(let i =1;i<=count;i++){
-       total+=price*i;
+        sum+=i*price;
     }
-    answer=total-money;
-    if(total<money) return 0;
-    return answer;
+    return (money-sum)>0?0:sum-money;
 }
