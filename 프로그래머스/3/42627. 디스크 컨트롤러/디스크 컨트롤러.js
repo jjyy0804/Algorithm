@@ -1,11 +1,11 @@
 function solution(jobs) {
-    var answer = 0;
+    let answer = 0;
     let index = 0;
     let now = 0;
     let sum = 0;
     const length = jobs.length;
     
-    jobs.sort((a, b) => a[0]- b[0]);
+    jobs.sort((a, b) => a[0]- b[0]); // 요청시간순
     
     const waiting = [];
     
@@ -14,7 +14,7 @@ function solution(jobs) {
             waiting.push(jobs[index]);
             index += 1;
             
-            waiting.sort((a, b) => a[1] - b[1]);
+            waiting.sort((a, b) => a[1] - b[1]);    // 소요시간 순
             continue;
         }
         if (!waiting.length) {
